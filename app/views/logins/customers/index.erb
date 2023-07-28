@@ -1,0 +1,23 @@
+<h2>Login as User</h2>
+
+<%= form_with(model: @user, url: authenticate_logins_customers_path, method: :post) do |form| %>
+  <% if flash[:error] %>
+    <p class="alert alert-danger"><%= flash[:error] %></p>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Login", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<p>New user? <%= link_to "Create an account", new_logins_customer_path %></p>
