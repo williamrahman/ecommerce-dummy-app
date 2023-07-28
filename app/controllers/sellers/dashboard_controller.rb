@@ -1,7 +1,7 @@
 module Sellers
-  class DashboardController < ApplicationController
+  class DashboardController < SellerBaseController
     def index
-
+      @products = Product.all
     end
   end
 end

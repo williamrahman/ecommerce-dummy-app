@@ -1,5 +1,5 @@
 module Customers
-  class DashboardController < ApplicationController
+  class DashboardController < CustomerBaseController
     def index
 
     end
