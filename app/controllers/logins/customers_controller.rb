@@ -28,6 +28,7 @@ module Logins
         redirect_to customers_root_path
       else
         flash[:error] = "Invalid email or password."
+        redirect_to logins_customers_path
       end
     end
 

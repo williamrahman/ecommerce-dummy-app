@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     resources :sellers do
       post :authenticate, on: :collection
+      delete 'logout' => 'sellers#logout'
     end
   end
 
@@ -15,5 +16,6 @@ Rails.application.routes.draw do
 
   namespace :sellers do
     get "/", to: "dashboard#index", as: "root"
+    resources :products
   end
 end

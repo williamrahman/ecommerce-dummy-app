@@ -28,13 +28,14 @@ module Logins
         redirect_to sellers_root_path
       else
         flash[:error] = "Invalid email or password."
+        redirect_to logins_sellers_path
       end
     end
 
     def logout
       session[:user_id] = nil
       flash[:success] = "Logged out successfully."
-      redirect_to logins_sellers_path
+      redirect_to '/'
     end
 
     private

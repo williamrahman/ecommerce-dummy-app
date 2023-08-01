@@ -1,0 +1,7 @@
+<h1><%= @product.name %></h1>
+<p>Category: <%= @product.category %></p>
+<p>Price: <%= number_to_currency(@product.price) %></p>
+
+<%= link_to "Add to Cart", add_to_cart_path(@product), method: :post, class: "btn btn-primary" %>
+
+<%= link_to "Back to Products", products_path, class: "btn btn-secondary" %>

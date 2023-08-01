@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>All Products</h1>
+  <%= link_to "Create Product", new_sellers_product_path, class: "back-link" %>
+
+  <% if @products.any? %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Category Name</th>
+          <th>Admin Name</th>
+          <th>Price</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.category %></td>
+            <td><%= product.seller.name if product.seller %></td>
+            <td><%= product.price%></td>
+            <td><%= product.created_at %></td>
+            <td><%= product.updated_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No products found.</p>
+  <% end %>
+
+  <%= link_to "Back to Home", sellers_root_path, class: "back-link" %>
+</div>

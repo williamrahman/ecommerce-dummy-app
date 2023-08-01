@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_28_171224) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_091914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_carts_on_customer_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "name", null: false
@@ -24,10 +31,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_171224) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "seller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["seller_id"], name: "index_orders_on_seller_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "seller_id"
     t.string "name"
-    t.string "category"
+    t.integer "category", default: 0
     t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

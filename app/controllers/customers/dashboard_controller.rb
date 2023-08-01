@@ -1,7 +1,9 @@
 module Customers
   class DashboardController < CustomerBaseController
-    def index
+    before_action :authenticate!
 
+    def index
+      @products = Cart.all
     end
   end
 end
