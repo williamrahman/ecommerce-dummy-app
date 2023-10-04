@@ -1,1 +1,1 @@
-SIMPLE INTEREST
+This is a SIMPLE INTEREST shell script
